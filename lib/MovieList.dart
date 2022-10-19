@@ -75,6 +75,7 @@ class _MovieListActivityState extends State<MovieListActivity> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset : false,
       body: Column(
         children: [
         Container(
@@ -85,6 +86,7 @@ class _MovieListActivityState extends State<MovieListActivity> {
             children: [
               Text("Watch", style:TextStyle(
           color: Colors.black,
+                  fontFamily: "Poppins",
                 fontSize: 35
           ),),
 
@@ -171,8 +173,9 @@ class _MovieListActivityState extends State<MovieListActivity> {
                                     //alignment: Alignment.topLeft,
                                     child: Text(
                                       movieList.originalTitle,
-                                      style: TextStyle(color: Colors.white,
+                                      style: const TextStyle(color: Colors.white,
                                           fontWeight: FontWeight.bold,
+                                          //fontFamily: "Poppins",
                                           fontSize: 22.0),
                                     )),
                               ),

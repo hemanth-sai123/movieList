@@ -68,42 +68,44 @@ class _MovieDescriptionActivityState extends State<MovieDescriptionActivity> {
     return Scaffold(
       body: isLoading?Center(
         child: CircularProgressIndicator(),
-      ):Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Stack(
-            children: [
-              Image.network(
-          "http://image.tmdb.org/t/p/w500${movieData.backdropPath}",
-                height: MediaQuery.of(context).size.height/2,
-                fit: BoxFit.fitHeight,
-              ),
-              Positioned(
-                top: 50,
-                left: 10,
-                child: Container(
-                  child: Row(
-                    children: [
-                      SizedBox(width: 20,),
-                      Image.asset("images/back.png"),
-                      SizedBox(width: 10,),
-                      Text(movieData==null?"":movieData.title,style: TextStyle(fontSize: 20,color: Colors.white),)
-                    ],
-                  ),
+      ):SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Stack(
+              children: [
+                Image.network(
+            "http://image.tmdb.org/t/p/w500${movieData.backdropPath}",
+                  height: MediaQuery.of(context).size.height/2,
+                  fit: BoxFit.fitHeight,
                 ),
-              )
-            ],
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 30,top: 40),
-            child:  Text("Overview",style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
-          ),
-          Container(
-            margin: EdgeInsets.only(left: 30,top: 20),
-            child:  Text(movieData.overview,style: TextStyle(fontSize: 18),),
-          ),
+                Positioned(
+                  top: 50,
+                  left: 10,
+                  child: Container(
+                    child: Row(
+                      children: [
+                        SizedBox(width: 20,),
+                        Image.asset("images/back.png"),
+                        SizedBox(width: 10,),
+                        Text(movieData==null?"":movieData.title,style: TextStyle(fontFamily: "Poppins",fontSize: 20,color: Colors.white),)
+                      ],
+                    ),
+                  ),
+                )
+              ],
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 30,top: 40),
+              child:  Text("Overview",style: TextStyle(fontSize: 25,fontFamily: "Poppins",fontWeight: FontWeight.bold),),
+            ),
+            Container(
+              margin: EdgeInsets.only(left: 30,top: 20),
+              child:  Text(movieData.overview,style: TextStyle(fontSize: 18,fontFamily: "Poppins"),),
+            ),
 
-        ],
+          ],
+        ),
       )
     );
   }
