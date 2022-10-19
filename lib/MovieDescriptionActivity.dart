@@ -1,6 +1,6 @@
 
 import 'dart:ffi';
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -74,10 +74,17 @@ class _MovieDescriptionActivityState extends State<MovieDescriptionActivity> {
           children: [
             Stack(
               children: [
-                Image.network(
-            "http://image.tmdb.org/t/p/w500${movieData.backdropPath}",
-                  height: MediaQuery.of(context).size.height/2,
-                  fit: BoxFit.fitHeight,
+            //     Image.network(
+            // "http://image.tmdb.org/t/p/w500${movieData.backdropPath}",
+            //       height: MediaQuery.of(context).size.height/2,
+            //       fit: BoxFit.fitHeight,
+            //     ),
+
+                CachedNetworkImage(
+                  imageUrl:  "http://image.tmdb.org/t/p/w500${movieData.backdropPath}",
+                  progressIndicatorBuilder: (context, url, downloadProgress) =>
+                      CircularProgressIndicator(value: downloadProgress.progress),
+                  errorWidget: (context, url, error) => Icon(Icons.error)
                 ),
                 Positioned(
                   top: 50,

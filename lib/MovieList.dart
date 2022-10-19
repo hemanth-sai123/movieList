@@ -1,4 +1,5 @@
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -155,9 +156,15 @@ class _MovieListActivityState extends State<MovieListActivity> {
                               Card(
                                 semanticContainer: true,
                                 clipBehavior: Clip.antiAliasWithSaveLayer,
-                                child: Image.network(
-                                  "http://image.tmdb.org/t/p/w500${movieList.backdropPath}",
-                                  fit: BoxFit.fill,
+                                // child: Image.network(
+                                //   "http://image.tmdb.org/t/p/w500${movieList.backdropPath}",
+                                //   fit: BoxFit.fill,
+                                // ),
+                               child: CachedNetworkImage(
+                                    imageUrl:  "http://image.tmdb.org/t/p/w500${movieList.backdropPath}",
+                                    progressIndicatorBuilder: (context, url, downloadProgress) =>
+                                        CircularProgressIndicator(value: downloadProgress.progress),
+                                    errorWidget: (context, url, error) => Icon(Icons.error)
                                 ),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(10.0),
